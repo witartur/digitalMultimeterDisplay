@@ -1,5 +1,8 @@
 # Prerequisites
 *.d
+/build
+*.code-workspace
+/.vscode
 
 # Object files
 *.o
