@@ -28,13 +28,13 @@ void Support_SeparateIntegerAndFractionFromFloat(float src, uint8_t *integer, ui
     *fraction = aux_var;
 }
 
-void Support_SimulatePeriodicTimerStart(millisec timeout, PeriodicTimerTimeoutCallback timeout_callback) {
+void Support_SimulatePeriodicTimer(millisec timeout, PeriodicTimerTimeoutCallback timeout_callback, volatile bool *timer_activity_flag) {
     millisec last_display_update_uptime = 0;
 
-    while(1) {
+    while(*timer_activity_flag) {
         millisec current_uptime = Uptime_GetCurrentUptime();
 
-        if(current_uptime - last_display_update_uptime > timeout) {
+        if(current_uptime - last_display_update_uptime >= timeout) {
             timeout_callback();
             last_display_update_uptime = current_uptime;
         }

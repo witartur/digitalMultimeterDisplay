@@ -12,7 +12,9 @@ static void PrintTwoDigits(uint8_t value_to_print) {
 }
 
 void Display_Update_SetOverload(bool is_true) {
-    printf("\nOverload\n");
+    system("clear");
+    printf("\n\t");
+    printf("OL");
 }
 
 void Display_Update_SetVoltage(bool sign, uint8_t integer, uint8_t fraction) {
